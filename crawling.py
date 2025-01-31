@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime
+import os
 
 TARGET_URL = 'https://www.albamon.com/alba-talk/experience'
  
@@ -75,7 +76,12 @@ for page in range(1, 11):
 # DataFrame 생성
 df = pd.DataFrame(all_data)
 
-# Excel 파일로 저장
-excel_file = "crawling_results.xlsx"
-df.to_excel(excel_file, index=False)
-print(f"Data saved to {excel_file}")
+# 저장할 디렉토리 생성
+output_dir = "crawling_result"
+os.makedirs(output_dir, exist_ok=True)
+
+# CSV 파일로 저장
+csv_file = os.path.join(output_dir, "crawling_results.csv")
+df.to_csv(csv_file, index=False, encoding='utf-8-sig')
+print(f"Data saved to {csv_file}")
+

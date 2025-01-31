@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime
+import os
 
 TARGET_URL = 'https://www.albamon.com/alba-talk/experience'
 SART_TALK_NO = 978055
@@ -101,7 +102,11 @@ for index, data in merged_data.iterrows():
     print(f"댓글 내용: {data['comment_text']}")
     print("=" * 50)
 
+# 저장할 디렉토리 생성
+output_dir = "crawling_result"
+os.makedirs(output_dir, exist_ok=True)
+
 # CSV 파일로 저장
-csv_file = "crawling_detail_results.csv"
+csv_file =  os.path.join(output_dir, "crawling_detail_results.csv")
 merged_data.to_csv(csv_file, index=False, encoding='utf-8-sig')  # UTF-8 인코딩으로 저장
 print(f"Data saved to {csv_file}")
