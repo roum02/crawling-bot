@@ -19,6 +19,6 @@ The `requirements.txt` file contains the dependencies needed for this project.
 - **crawling.py**: Crawls content lists and retrieves data as a CSV file.
 - **detail-brute-force-crawling.py**: Crawls content details and comments, then saves the data as a CSV file.
 - **requirements.txt**: Lists project dependencies.
-- **crawling_result/**: Stores the resulting CSV files.
+- **crawling_result**: Stores the resulting CSV files.
 
 
